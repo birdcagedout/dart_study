@@ -33,8 +33,8 @@ class MyClass2 {
 
 // 3. 하나의 생성자에서 다른 생성자 호출할 때의 유의할 점
 // - 생성자 body에서 this()를 호출할 수 없다. ==> 반드시 "초기화 리스트" 부분에서만 this()를 호출할 수 있다.
-// - 초기화 리스트에서 this()를 호출하면 ==> 1) 해당 생성자는 body를 만들 수 없다.
-//                                    2) 초기화 목록에 this() 외에 다른 코드는 넣을 수 없다.
+// - 초기화 리스트에서 this()를 호출하면 ==>   1) 해당 생성자는 body를 만들 수 없다.
+//                                           2) 초기화 목록에 this() 외에 다른 코드는 넣을 수 없다.
 class MyClass3 {
   late int data1;
   late int data2;
@@ -48,6 +48,7 @@ class MyClass3 {
 
   // named constructor
   MyClass3.first(int data1): this(data1, 0);                      // OK
+  // MyClass3.first(int data1): super();                      // OK
 
   // MyClass3.second(int data2) {                                 // 에러: this()는 생성자의 body에 쓸 수 없다. ==> 초기화 리스트 부분에만 쓸 수 있다.
   //   this(0, data2);
